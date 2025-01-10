@@ -16,6 +16,9 @@ public interface CategoryMapper {
     /**
      * 插入数据
      * @param category
+     * 使用AutoFill注解来自动填充操作类型
+     * 这个注解用于在执行特定操作时自动填充字段
+     * 当操作类型为INSERT时，会自动填充标记了这个注解的字段
      */
     @AutoFill(value = OperationType.INSERT)
     @Insert("insert into category(type, name, sort, status, create_time, update_time, create_user, update_user)" +
