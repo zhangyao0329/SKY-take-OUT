@@ -33,9 +33,10 @@ public interface DishMapper {
     @AutoFill(value = OperationType.INSERT)
     void insert(Dish dish);
 
+
     /**
      * 菜品分页查询
-     *
+     * select d.*, c.name as categoryName from dish d left join category c on d.category_id = c.id;
      * @param dishPageQueryDTO
      * @return
      */
