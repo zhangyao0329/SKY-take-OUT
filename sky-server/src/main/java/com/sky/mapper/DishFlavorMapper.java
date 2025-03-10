@@ -12,5 +12,5 @@ public interface DishFlavorMapper {
      *
      * @param flavors
      */
-    void inserBatch(List<DishFlavor> flavors);
+    void insertBatch(List<DishFlavor> flavors);
 }

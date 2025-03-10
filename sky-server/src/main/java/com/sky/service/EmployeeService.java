@@ -22,18 +22,21 @@ public interface EmployeeService {
     void save(EmployeeDTO employeeDTO);
 
     /**
-     * 员工分页查询
+     * 分页查询
      * @param employeePageQueryDTO
      * @return
      */
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
     /**
-     * 账号的启用与禁用
+     * 启用禁用员工账号
+     * @param status
+     * @param id
      */
-    void startOrStop(Integer status, long id);
+    void startOrStop(Integer status, Long id);
+
     /**
-     * 根据id查询员工的信息
-     *
+     * 根据id查询员工
      * @param id
      * @return
      */
@@ -41,9 +44,7 @@ public interface EmployeeService {
 
     /**
      * 编辑员工信息
-     *
      * @param employeeDTO
-     * @return
      */
     void update(EmployeeDTO employeeDTO);
 }

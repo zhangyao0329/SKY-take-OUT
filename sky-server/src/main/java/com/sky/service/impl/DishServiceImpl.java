@@ -23,23 +23,24 @@ public class DishServiceImpl implements DishService {
     private DishFlavorMapper dishFlavorMapper;
 
     @Override
-    @Transactional
+    @Transactional  // 保证事务的一致性
     public void saveWithFlavor(DishDTO dishDTO) {
 
         Dish dish = new Dish();
         BeanUtils.copyProperties(dishDTO, dish);
 
-//        获取inset语句生成的主键值
-        Long dishId = dish.getId();
 
 //        向菜品表插入1条数据
-        dishMapper.insert();
+        dishMapper.insert(dish);
+
+        //获取inset语句生成的主键值
+        Long dishId = dish.getId();
+
 //        向口味表插入n条数据
         List<DishFlavor> flavors = dishDTO.getFlavors();
         if (flavors != null && flavors.size() > 0) {
-            flavors.forEach(dishFlavor -> dish.setId(dishId));
-            dishFlavorMapper.inserBatch(flavors);
-
+            flavors.forEach(dishFlavor -> dishFlavor.setDishId(dishId));
+            dishFlavorMapper.insertBatch(flavors);
         }
     }
 }
