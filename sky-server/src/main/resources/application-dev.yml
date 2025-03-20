@@ -11,3 +11,8 @@ sky:
     access-key-id: LTAI5tA8jGB98Tvi7tFvYrci
     access-key-secret: M04iSrekcSiAZ1Bngd6mljr3VBoErk
     bucket-name: zhang-aliyun-sky
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 0
