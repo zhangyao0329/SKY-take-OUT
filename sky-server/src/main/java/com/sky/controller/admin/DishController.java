@@ -42,7 +42,7 @@ public class DishController {
     public Result save(@RequestBody DishDTO dishDTO) {
         log.info("新增菜品：{}", dishDTO);
         dishService.saveWithFlavor(dishDTO);
-
+//保证数据的一致性
         //清理缓存数据
         String key = "dish_" + dishDTO.getCategoryId();
         cleanCache(key);
@@ -146,10 +146,15 @@ public class DishController {
 
     /**
      * 清理缓存数据
-     * @param pattern
+     * 根据指定模式清理缓存
+     * 保证数据的一致性
+     *
+     * @param pattern 缓存键的模式，用于匹配需要清理的缓存键
      */
     private void cleanCache(String pattern){
+        // 获取所有匹配指定模式的缓存键
         Set keys = redisTemplate.keys(pattern);
+        // 删除所有匹配的缓存键
         redisTemplate.delete(keys);
     }
 }
