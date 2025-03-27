@@ -16,10 +16,14 @@ spring:
       max-evictable-idle-time-millis: 300000
       # 设置最小空闲时间，单位毫秒，默认3分钟
       min-evictable-idle-time-millis: 180000
+      keep-alive-between-time-millis: 60000
       # 设置心跳检测SQL，确保连接有效
       validation-query: SELECT 1
       # 测试连接是否可用
       test-on-borrow: true
+      keep-alive: true
+      # 新增：开启空闲检测
+      test-while-idle: true
   redis:
     host: ${sky.redis.host}
     port: ${sky.redis.port}

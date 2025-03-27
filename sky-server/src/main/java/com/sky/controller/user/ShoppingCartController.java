@@ -58,7 +58,7 @@ public class ShoppingCartController {
 
     /**
      * 删除购物车中一个商品
-     * @param shoppingCartDTO  
+     * @param shoppingCartDTO
      * @return
      */
     @PostMapping("/sub")
