@@ -23,18 +23,21 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+
     /**
      * 用户下单
+     *
      * @param ordersSubmitDTO
      * @return
      */
     @PostMapping("/submit")
     @ApiOperation("用户下单")
-    public Result<OrderSubmitVO> submit(@RequestBody OrdersSubmitDTO ordersSubmitDTO){
-        log.info("用户下单，参数为：{}",ordersSubmitDTO);
+    public Result<OrderSubmitVO> submit(@RequestBody OrdersSubmitDTO ordersSubmitDTO) {
+        log.info("用户下单，参数为：{}", ordersSubmitDTO);
         OrderSubmitVO orderSubmitVO = orderService.submitOrder(ordersSubmitDTO);
         return Result.success(orderSubmitVO);
     }
+
 
     /**
      * 订单支付
@@ -104,14 +107,17 @@ public class OrderController {
         return Result.success();
     }
 
+// 客户催单
+
     /**
      * 客户催单
+     *
      * @param id
      * @return
      */
     @GetMapping("/reminder/{id}")
     @ApiOperation("客户催单")
-    public Result reminder(@PathVariable("id") Long id){
+    public Result reminder(@PathVariable("id") Long id) {
         orderService.reminder(id);
         return Result.success();
     }
